@@ -1,0 +1,56 @@
+from time import sleep
+import cowsay as say
+
+def view_entries():
+    with open("jounal.txt") as f:
+        lines = f.readlines()
+
+        if len(lines) == 0:
+            print("jounal is empty.")
+        else:
+            for c, line in enumerate(lines):
+                print(f"{c}.{line}", end="")
+            print(f"You have {c+1} entries in total.")
+
+
+def add_entry():
+    entry = input("Enter yout entry below\n-->")
+    with open("jounal.txt", "a") as f:
+        f.write(f"{entry}\n")
+    print("Entry added successfully.")  
+
+
+def delete_entry():
+    # not yet....
+    print
+
+say.trex("#----- Journal -----#\n#-----Beta Version 1.0-----#")
+
+while True: 
+    print("1.View entries\n2.Add entry\n3.Exit Journal program")   
+    while True:
+        n = 6
+        n = n-1
+        try:    
+            option = int(input("Choose option: "))
+        except Exception as e:
+            print(f"invalid input. {n} attempts left.")   
+        else:
+            break       
+        if n == 0:
+            break
+        
+    if option == 1:
+        view_entries()
+    elif option == 2:
+        add_entry()
+    elif option == 3:
+        print("terminating Journal execution".capitalize())
+
+    for n in range(1, 6):
+        print(n, end="...")
+        sleep(1)
+        print('\r', end='')
+
+    exit("Program execution terminated.".upper())
+
